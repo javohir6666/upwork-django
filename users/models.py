@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from config import settings
+from datetime import datetime # idk if this is required, I assume so?
 USER_TYPE = (
     ('Applicant', 'Applicant'),
     ('Employer', 'Employer'),
@@ -86,7 +87,7 @@ class WorkExperience(models.Model):
 class Education(models.Model):
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
-    level = models.CharField(max_length=255, choices=LEVEL_EDUCATION)
+    level = models.CharField(max_length=255)
     name_of_deegree = models.CharField(max_length=255)
     start = models.DateField()
     end = models.DateField()
@@ -98,3 +99,9 @@ class Education(models.Model):
 
     def __str__(self):
         return str(self.title)
+    
+    def get_production_date(self):
+        return self.start.strftime("%d-%m-%Y")
+    
+    def get_production_date(self):
+        return self.end.strftime("%d-%m-%Y")

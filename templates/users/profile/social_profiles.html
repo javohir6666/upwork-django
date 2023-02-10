@@ -13,7 +13,7 @@
         </div>
         <!-- Card body -->
         <div class="card-body">
-            <form method="POST" action="/users/profile/{{user.username}}/social-network/update/" enctype="multipart/form-data">
+            <form method="POST" action="/users/settings/{{user.username}}/social-network/update/" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <!-- Telegram -->
@@ -75,8 +75,8 @@
                     </div>
                     <div class="col-lg-9 col-md-8 col-12">
                         <input type="text" name="youtube" class="form-control mb-1" {% if user.youtube == None %}placeholder="youtube"{% else %}value="{{user.youtube}}"{% endif %}>
-                        <small class="text-muted">Add your linkedin profile URL. (
-                            https://www.linkedin.com/in/jitu-chauhan-ba004b78)</small>
+                        <small class="text-muted">Add your youtube profile URL. (
+                            https://www.youtube.com/jitu-chauhan-ba004b78)</small>
                     </div>
                 </div>
                 <!-- Button -->

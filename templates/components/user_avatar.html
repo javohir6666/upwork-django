@@ -182,7 +182,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="{% url 'users:profile' request.user %}">
+                    <a class="dropdown-item" href="#">
                         <i class="fa fa-user me-2"></i>Profile
                     </a>
                 </li>
@@ -192,7 +192,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="{% url 'users:profile' request.user %}">
                         <i class="fa fa-settings me-2"></i>Settings
                     </a>
                 </li>

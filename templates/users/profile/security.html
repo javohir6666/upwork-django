@@ -13,21 +13,6 @@
         </div>
         <!-- Card body -->
         <div class="card-body">
-            <h4 class="mb-0">Email Address</h4>
-            <p>
-                Your current email address is
-                <span class="text-success">stellaflores@gmail.com</span>
-            </p>
-            <form class="row">
-                <div class="mb-3 col-lg-6 col-md-12 col-12">
-                    <label class="form-label" for="email">New email address</label>
-                    <input id="email" type="email" name="email" class="form-control" placeholder="" required="">
-                    <button type="submit" class="btn btn-primary mt-2">
-                        Update Details
-                    </button>
-                </div>
-            </form>
-            <hr class="my-5">
             <div>
                 <h4 class="mb-0">Change Password</h4>
                 <p>
@@ -35,29 +20,30 @@
                     password, so please expect that email after submitting.
                 </p>
                 <!-- Form -->
-                <form class="row">
+                <form class="row" action="/users/settings/{{user.username}}/security/update/" enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
                     <div class="col-lg-6 col-md-12 col-12">
                             <!-- Current password -->
                         <div class="mb-3">
                             <label class="form-label" for="currentpassword">Current password</label>
-                            <input id="currentpassword" type="password" name="currentpassword" class="form-control" placeholder="" required="">
+                            <input type="password" name="current_password" class="form-control" placeholder="" required="">
                         </div>
                             <!-- New password -->
                         <div class="mb-3 password-field">
                             <label class="form-label" for="newpassword">New password</label>
-                            <input id="newpassword" type="password" name="newpassword" class="form-control mb-2" placeholder="" required="">
+                            <input type="password" name="password" class="form-control mb-2" placeholder="" required="">
                             <div class="row align-items-center g-0">
                                 <div class="col-6">
                                     <span data-bs-toggle="tooltip" data-placement="right" data-bs-original-title="Test it by typing a password in the field below. To reach full strength, use at least 6 characters, a capital letter and a digit, e.g. 'Test01'">Password
                                         strength
-                                        <i class="fe fe-help-circle ms-1"></i></span>
+                                        <i class="fa fa-circle-info ms-1"></i></span>
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3">
                                 <!-- Confirm new password -->
                             <label class="form-label" for="confirmpassword">Confirm New Password</label>
-                            <input id="confirmpassword" type="password" name="confirmpassword" class="form-control mb-2" placeholder="" required="">
+                            <input type="password" name="password2" class="form-control mb-2" placeholder="" required="">
                         </div>
                             <!-- Button -->
                         <button type="submit" class="btn btn-primary">
@@ -72,6 +58,12 @@
                         </p>
                     </div>
                 </form>
+                {% if messages %}
+                {% for message in messages  %}
+                <div class="alert {{ message.tags }}" role="alert">
+                  <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
             </div>
         </div>
     </div>

@@ -207,7 +207,7 @@
 				{% include 'components/user_avatar.html' %}
 				{% else %}
 				<a href="{% url 'users:login' %}" class="btn btn-outline-dark ms-3">Sign in</a>
-				<a href="#" class="btn btn-dark ms-1">Sign up</a>
+				<a href="{% url 'users:signup' %}" class="btn btn-dark ms-1">Sign up</a>
 				{% endif %}
 				</div>
 			</div>

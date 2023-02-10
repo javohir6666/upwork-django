@@ -43,7 +43,7 @@
                           <a class="btn btn-sm btn-primary btn-floating {% if user.github %}active {% else %} disabled{% endif %} " style="background-color: #333333;" href="https://github.com/{{user.github}}" role="button">
                             <i class="fab fa-github"></i>
                           </a>
-                          <a class="btn btn-sm btn-primary mx-5 btn-floating {% if user.phone %}active {% else %} disabled{% endif %} " style="background-color: #333333;" href="https://github.com/{{user.phone}}" role="button">
+                          <a class="btn btn-sm btn-primary mx-5 btn-floating {% if user.phone %}active {% else %} disabled{% endif %} " style="background-color: #333333;" href="tel:{{user.phone}}" role="button">
                             <i class="fa fa-phone-volume"></i>
                           </a>
                           
@@ -77,9 +77,16 @@
             <!-- List -->
                             <ul class="list-unstyled ms-n2 mb-0">
                                 <!-- Nav item -->
-                                {% url 'users:profile' as profile %}
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'users:profile' user.username %}"><i class="fa fa-gear nav-icon"></i>Edit Profile</a>
+                                </li>
+                                <!-- Nav item -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'users:profileEducation' user.username %}"><i class="fa fa-book-open nav-icon"></i>Education</a>
+                                </li>
+                                  <!-- Nav item -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'users:profileSkill' user.username %}"><i class="fa fa-list nav-icon"></i>Skills</a>
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item">
@@ -93,6 +100,10 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'users:profileNotification' user.username %}"><i class="fa fa-bell nav-icon"></i>Notifications</a>
                                 </li>
+                                <!-- Nav item -->
+                                <li class="nav-item">
+                                  <a class="nav-link" href="{% url 'users:profilelanguages' user.username %}"><i class="fa fa-language nav-icon"></i>Languages</a>
+                              </li>
                                 <!-- Nav item -->
                                 <li class="nav-item">
                                     <a class="nav-link" href="../index.html"><i class="fa fa-power-off nav-icon"></i>Sign Out</a>

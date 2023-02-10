@@ -34,7 +34,7 @@
                     Edit your personal information and address.
                 </p>
                 <!-- Form -->
-                <form method="POST" action="/users/profile/{{user.username}}/update/" enctype="multipart/form-data" class="row">
+                <form method="POST" action="/users/settings/{{user.username}}/update/" enctype="multipart/form-data" class="row">
                     {% csrf_token %}
                     <!-- First name -->
                     <div class="mb-3 col-12 col-md-6">
@@ -71,11 +71,11 @@
                     <label class="form-label" for="gender">Gender</label>
                     <div class="mb-3 col-12 col-md-6">
                         <div class="form-check form-check-inline">
-                          <input id="Male" name="gender" type="radio" value="Male" class="form-check-input" checked>
+                          <input id="Male" name="gender" type="radio" value="Male" class="form-check-input" {% if user.gender == 'Male' %}checked{% endif %}>
                           <label class="form-check-label" for="Male">Male</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input id="Female" name="gender" type="radio" value="Female" class="form-check-input">
+                          <input id="Female" name="gender" type="radio" value="Female" class="form-check-input"  {% if user.gender == 'Female' %}checked{% endif %}>
                           <label class="form-check-label" for="Female">Female</label>
                         </div>
                       </div>
@@ -95,7 +95,7 @@
                 </form>
                 {% if messages %}
                 {% for message in messages  %}
-                <div class="alert alert-success" role="alert">
+                <div class="alert {{ message.tags }} mt-5" role="alert">
                   <p>{{message}}</p>
                 {% endfor %}
             {% endif %}
